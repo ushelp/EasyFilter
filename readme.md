@@ -8,7 +8,7 @@ EasyFilter是一个Jave Web请求内容过滤替换组件，能够对用户请�
 2. 非法关键字替换（如：网络系统中国情不允许的特殊关键词）
 3. SQL防注入过滤（如：`%`,`*`,`or`,`delete`,`and`等等SQL特殊关键字）
 
-支持使用配置文件自定义过滤配置。
+支持使用properties或xml配置文件自定义过滤配置。
 
  
 [使用手册-中文](doc/readme-zh.md)
@@ -20,7 +20,7 @@ EasyFilter is a Jave Web content filtering request replacement component, the us
 2. Illegal keyword substitution (eg: network system does not allow the special keyword)
 3. SQL-injection filter (eg: `%`, `*`, `or`,` delete`, `and` SQL special keyword)
 
-Supports custom filtering configuration profiles.
+Supports use properties or xml file custom filtering configuration profiles.
 
  
 [Manual-English](doc/readme-en.md)

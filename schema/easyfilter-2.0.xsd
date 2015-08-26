@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<xsd:schema targetNamespace="http://www.easyproject.cn/schema/easyFilter"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.easyproject.cn/schema/easyFilter"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+
+	<xsd:annotation>
+		<xsd:documentation>
+		<![CDATA[
+		 EasyFilter
+		- @author easyproject.cn 
+		- @author inthinkcolor@gmail.com
+		-  The easyFilter-failsafe.properties is a default configuration for EasyFilter, if an easyFilter.properties is not configured.
+
+		 ]]>
+		</xsd:documentation>
+	</xsd:annotation>
+	
+	
+	
+
+	<xsd:element name="easyFilter">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="keywordFilter" maxOccurs="1">
+					<xsd:annotation>
+						<xsd:documentation>
+						<![CDATA[
+								 Request keyword filter
+							]]>
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="filter" minOccurs="1" maxOccurs="1">
+								<xsd:annotation>
+									<xsd:documentation>
+										<![CDATA[	
+										Whether to filter keyword from request parameters
+										- on: Filter keyword parameter on
+										- off: Filter keyword parameter off
+										- if not on or off, use off
+										]]>
+									</xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:enumeration value="on"></xsd:enumeration>
+										<xsd:enumeration value="off"></xsd:enumeration>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>	
+							<xsd:element name="defaultReplace" minOccurs="1" maxOccurs="1">
+								<xsd:annotation>
+									<xsd:documentation>
+										<![CDATA[	
+										if find keyword, use defaultReplace to replace
+										]]>
+									</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>	
+							<xsd:element name="replaceList" minOccurs="1" maxOccurs="1">
+								<xsd:annotation>
+									<xsd:documentation>
+										<![CDATA[	
+										- keyword and replace list
+										- Format: keyword  replace
+										- User defined keyword filter item
+										]]>
+									</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="replace" minOccurs="0"  maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:attribute name="keyword" use="required">
+												</xsd:attribute>
+												<xsd:attribute name="replace" use="optional">
+												</xsd:attribute>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>	
+							<xsd:element name="excludeParameters" minOccurs="1" maxOccurs="1">
+								<xsd:annotation>
+									<xsd:documentation>
+										<![CDATA[	
+										- exclude keyword filter parameterName list
+										- Format: regexParameterName#regexParameterName#...
+										- Supports regex expressions
+										]]>
+									</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="keyword" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>						
+							<xsd:element name="excludeURI" minOccurs="1" maxOccurs="1">
+								<xsd:annotation>
+									<xsd:documentation>
+										<![CDATA[	
+											- exculde keyword filter uri list, request.getRequestURI()
+											- Format: regexURI
+											- Supports regex expressions
+										]]>
+									</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="uri" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>						
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+
+				<xsd:element name="sqlFilter" maxOccurs="1" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>
+						<![CDATA[
+								SQL inject keyword filter
+							]]>
+						</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="filter" minOccurs="1" maxOccurs="1">
+								<xsd:annotation>
+									<xsd:documentation>
+										<![CDATA[	
+										Whether to filter SQL inject keyword parameters
+										- on: Filter SQL inject keyword parameter on
+										- off: Filter SQL inject keyword parameter off
+										- if not on or off, use off
+										]]>
+									</xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:enumeration value="on"></xsd:enumeration>
+										<xsd:enumeration value="off"></xsd:enumeration>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>							
+							<xsd:element name="injectFilterList" minOccurs="1" maxOccurs="1">
+								<xsd:annotation>
+									<xsd:documentation>
+										<![CDATA[	
+											- exculde keyword filter uri list, request.getRequestURI()
+											- Format: regexURI
+											- Supports regex expressions
+										]]>
+									</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="value" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>			
+							<xsd:element name="includeParameters" minOccurs="1" maxOccurs="1">
+								<xsd:annotation>
+									<xsd:documentation>
+										<![CDATA[	
+											- exculde keyword filter uri list, request.getRequestURI()
+											- Format: regexURI
+											- Supports regex expressions
+										]]>
+									</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="value" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>			
+						
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+   
+</xsd:schema>
