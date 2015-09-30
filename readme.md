@@ -26,6 +26,16 @@ Supports use properties or xml file custom filtering configuration profiles.
 [Manual-English](doc/readme-en.md)
 
 
+## Maven
+
+```XML
+<dependency>
+	<groupId>cn.easyproject</groupId>
+	<artifactId>easyfilter</artifactId>
+	<version>2.0.1-RELEASE</version>
+</dependency>
+```
+
 ## 
 
 [官方主页](http://www.easyproject.cn/easyfilter/zh-cn/index.jsp '官方主页')

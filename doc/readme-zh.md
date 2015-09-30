@@ -17,6 +17,14 @@ EasyFilter是一个Jave Web请求内容过滤替换组件，能够对用户请�
 ##  使用步骤
 
 1. 加入jar包：`EasyFilter-X.X.X.jar`
+ - Maven:
+ ```XML
+ <dependency>
+ 	<groupId>cn.easyproject</groupId>
+ 	<artifactId>easyfilter</artifactId>
+ 	<version>2.0.1-RELEASE</version>
+ </dependency>
+ ```
 
 2. 在`web.xml`配置过滤器
 

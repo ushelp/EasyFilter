@@ -1,31 +1,133 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>cn.easyproject</groupId>
-  <artifactId>easyfilter</artifactId>
-  <version>2.0.1-RELEASE</version>
-  
-  <name>EasyFilte</name>
-  <url>http://easyproject.cn/easyfilter</url>
-  
-  <dependencies>
-  
-  	<dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- 1. OSS parent -->
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>9</version>
+	</parent>
+
+	<!-- 2. OSS infomation -->
+	<groupId>cn.easyproject</groupId>
+	<artifactId>easyfilter</artifactId>
+	<version>2.0.1-RELEASE</version>
+	<packaging>jar</packaging>
+	<name>EasyFilter</name>
+	<url>http://easyproject.cn/easyfilter</url>
+	<description>
+  	<![CDATA[
+  	EasyFilter is a Jave Web content filtering request replacement component, Supports use properties or xml file custom filtering configuration profiles.
+  	]]>
+  </description>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/ushelp/EasyFilter.git</url>
+		<connection>scm:git:ssh://github.com/ushelp/EasyFilter.git</connection>
+		<tag>easyfilter</tag>
+	</scm>
+	<developers>
+		<developer>
+			<name>Ray Yam</name>
+			<email>inthinkcolor@gmail.com</email>
+			<url>http://easyproject.cn</url>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+	<!-- 3. profiles -->
+	<profiles>
+		<!-- 使用了 Maven 的 profile 功能，只有在 release 的时候，创建源码包、创建文档包、使用 GPG 进行数字签名。 -->
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<!-- Source -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.2.1</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- Javadoc -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<configuration>
+							<charset>UTF-8</charset>
+							<encoding>UTF-8</encoding>
+							<docencoding>UTF-8</docencoding>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- GPG -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+
+	<!-- 两个ID必须与 setting.xml中的<server><id>oss</id></server>保持一致 -->
+	<!-- parent中定义了默认的server id：sonatype-nexus-snapshots和sonatype-nexus-staging。server中id只要配置一致即可。 -->
+	<!-- <distributionManagement> <snapshotRepository> <id>oss</id> <url>https://oss.sonatype.org/content/repositories/snapshots/</url> 
+		</snapshotRepository> <repository> <id>oss</id> <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url> 
+		</repository> </distributionManagement> -->
+
+
+	<!-- 4. Other -->
+	<dependencies>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-  </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

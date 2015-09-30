@@ -17,6 +17,14 @@ Supports use properties or xml file custom filtering configuration profiles.
 ##  Use step
 
 1. Add jar：`EasyFilter-X.X.X.jar`
+ - Maven:
+ ```XML
+ <dependency>
+ 	<groupId>cn.easyproject</groupId>
+ 	<artifactId>easyfilter</artifactId>
+ 	<version>2.0.1-RELEASE</version>
+ </dependency>
+ ```
 
 2. Configure the filter in `web.xml`
 
