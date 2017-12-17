@@ -22,7 +22,7 @@ Supports use properties or xml file custom filtering configuration profiles.
  <dependency>
  	<groupId>cn.easyproject</groupId>
  	<artifactId>easyfilter</artifactId>
- 	<version>2.0.1-RELEASE</version>
+ 	<version>2.0.2-RELEASE</version>
  </dependency>
  ```
 

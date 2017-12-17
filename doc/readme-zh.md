@@ -22,7 +22,7 @@ EasyFilter是一个Jave Web请求内容过滤替换组件，能够对用户请�
  <dependency>
  	<groupId>cn.easyproject</groupId>
  	<artifactId>easyfilter</artifactId>
- 	<version>2.0.1-RELEASE</version>
+ 	<version>2.0.2-RELEASE</version>
  </dependency>
  ```
 
